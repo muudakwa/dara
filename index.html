@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dara | Visual Storyteller & Brand Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --sage: #9CAF88;
+            --sage-dark: #7A8F6B;
+            --off-white: #FAF9F6;
+            --cream: #F5F2ED;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--off-white);
+            color: #2C2C2C;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .text-sage { color: var(--sage); }
+        .bg-sage { background-color: var(--sage); }
+        .bg-sage-dark { background-color: var(--sage-dark); }
+        .bg-cream { background-color: var(--cream); }
+        .border-sage { border-color: var(--sage); }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 12px 12px 40px 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .portfolio-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .floating-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(250, 249, 246, 0.85);
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Floating Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 floating-nav border-b border-stone-200/50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight text-stone-800" style="font-family: 'Space Grotesk', sans-serif;">
+                DARA<span class="text-sage">.</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-stone-600">
+                <a href="#portfolio" class="hover:text-sage transition-colors">Portfolio</a>
+                <a href="#pictures" class="hover:text-sage transition-colors">My Pictures</a>
+                <a href="#about" class="hover:text-sage transition-colors">About</a>
+                <a href="#skills" class="hover:text-sage transition-colors">Services</a>
+                <a href="#contact" class="hover:text-sage transition-colors">Contact</a>
+            </div>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" 
+                    class="bg-sage text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-sage-dark transition-all transform hover:scale-105">
+                Work With Me
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen hero-bg flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-50/90"></div>
+        
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto reveal active">
+            <p class="text-white/90 text-sm md:text-base tracking-[0.3em] uppercase mb-4 font-medium">Visual Storyteller & Brand Specialist</p>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight tracking-tight">
+                Clean.<br>
+                <span class="italic font-light">Elegant.</span><br>
+                Emotional.
+            </h1>
+            <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
+                Creating visual narratives that speak louder than words. Specializing in branding and photography that connects.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})" 
+                        class="bg-white text-stone-800 px-8 py-4 rounded-full font-medium hover:bg-stone-100 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                    View My Work <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-white/70"></i>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 px-6 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <p class="text-sage font-medium tracking-wider uppercase text-sm mb-2">Selected Works</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-stone-800">Portfolio</h2>
+                </div>
+                <p class="text-stone-500 mt-4 md:mt-0 max-w-md text-right">
+                    Curated projects showcasing clean aesthetics and emotional storytelling through visual communication.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-card group cursor-pointer reveal">
+                    <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                             alt="Portrait Project" 
+                             class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="portfolio-overlay absolute inset-0 bg-sage/90 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="bg-white text-stone-800 px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                Open Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold text-stone-800">Ethereal Portraits</h3>
+                            <p class="text-stone-500 text-sm mt-1">Studio Jakarta</p>
+                        </div>
+                        <span class="text-xs font-medium text-sage bg-sage/10 px-3 py-1 roundedage/10 px-3 py-1 rounded-full">Photography</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-card group cursor-pointer reveal" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" 
+                             alt="Brand Identity" 
+                             class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="portfolio-overlay absolute inset-0 bg-sage/90 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="bg-white text-stone-800 px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                Open Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold text-stone-800">Minimalist Brand</h3>
+                            <p class="text-stone-500 text-sm mt-1">Bandung Creative Space</p>
+                        </div>
+                        <span class="text-xs font-medium text-sage bg-sage/10 px-3 py-1 rounded-full">Branding</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-card group cursor-pointer reveal" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" 
+                             alt="Lifestyle Shoot" 
+                             class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="portfolio-overlay absolute inset-0 bg-sage/90 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="bg-white text-stone-800 px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                Open Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold text-stone-800">Urban Stories</h3>
+                            <p class="text-stone-500 text-sm mt-1">Street Yogyakarta</p>
+                        </div>
+                        <span class="text-xs font-medium text-sage bg-sage/10 px-3 py-1 rounded-full">Photography</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-card group cursor-pointer reveal">
+                    <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=800&q=80" 
+                             alt="Product Photography" 
+                             class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="portfolio-overlay absolute inset-0 bg-sage/90 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="bg-white text-stone-800 px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                Open Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold text-stone-800">Botanical Series</h3>
+                            <p class="text-stone-500 text-sm mt-1">Home Studio</p>
+                        </div>
+                        <span class="text-xs font-medium text-sage bg-sage/10 px-3 py-1 rounded-full">Photography</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-card group cursor-pointer reveal" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80" 
+                             alt="Fashion Editorial" 
+                             class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="portfolio-overlay absolute inset-0 bg-sage/90 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="bg-white text-stone-800 px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                Open Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold text-stone-800">Summer Editorial</h3>
+                            <p class="text-stone-500 text-sm mt-1">Bali Location</p>
+                        </div>
+                        <span class="text-xs font-medium text-sage bg-sage/10 px-3 py-1 rounded-full">Branding</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-card group cursor-pointer reveal" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80" 
+                             alt="Creative Portrait" 
+                             class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="portfolio-overlay absolute inset-0 bg-sage/90 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="bg-white text-stone-800 px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                Open Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold text-stone-800">Golden Hour</h3>
+                            <p class="text-stone-500 text-sm mt-1">Rooftop Surabaya</p>
+                        </div>
+                        <span class="text-xs font-medium text-sage bg-sage/10 px-3 py-1 rounded-full">Photography</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Pictures Section (Polaroid Horizontal Scroll) -->
+    <section id="pictures" class="py-24 bg-stone-50 overflow-hidden">
+        <div class="px-6 mb-12 max-w-7xl mx-auto reveal">
+            <p class="text-sage font-medium tracking-wider uppercase text-sm mb-2">Personal Moments</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-stone-800 mb-4">My Pictures</h2>
+            <p class="text-stone-500 max-w-xl">A collection of personal moments and behind-the-scenes captured in timeless polaroid style.</p>
+        </div>
+
+        <div class="relative">
+            <div class="flex space-x-8 overflow-x-auto hide-scrollbar px-6 pb-8 cursor-grab active:cursor-grabbing" id="polaroid-scroll">
+                <!-- Polaroid 1 -->
+                <div class="flex-shrink-0 w-72 polaroid reveal">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" 
+                         alt="Dara Portrait 1" class="w-full aspect-square object-cover">
+                    <p class="text-center mt-4 font-handwriting text-stone-600 text-sm" style="font-family: 'Inter', sans-serif;">Morning coffee ☕</p>
+                </div>
+
+                <!-- Polaroid 2 -->
+                <div class="flex-shrink-0 w-72 polaroid reveal" style="transform: rotate(2deg);">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" 
+                         alt="Dara Portrait 2" class="w-full aspect-square object-cover">
+                    <p class="text-center mt-4 font-handwriting text-stone-600 text-sm">Studio vibes 🎨</p>
+                </div>
+
+                <!-- Polaroid 3 -->
+                <div class="flex-shrink-0 w-72 polaroid reveal" style="transform: rotate(-3deg);">
+                    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80" 
+                         alt="Dara Portrait 3" class="w-full aspect-square object-cover">
+                    <p class="text-center mt-4 font-handwriting text-stone-600 text-sm">Weekend mood 🌿</p>
+                </div>
+
+                <!-- Polaroid 4 -->
+                <div class="flex-shrink-0 w-72 polaroid reveal" style="transform: rotate(1deg);">
+                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=600&q=80" 
+                         alt="Dara Portrait 4" class="w-full aspect-square object-cover">
+                    <p class="text-center mt-4 font-handwriting text-stone-600 text-sm">Creative process ✨</p>
+                </div>
+
+                <!-- Polaroid 5 -->
+                <div class="flex-shrink-0 w-72 polaroid reveal" style="transform: rotate(-2deg);">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&q=80" 
+                         alt="Dara Portrait 5" class="w-full aspect-square object-cover">
+                    <p class="text-center mt-4 font-handwriting text-stone-600 text-sm">Nature walk 🍃</p>
+                </div>
+
+                <!-- Polaroid 6 -->
+                <div class="flex-shrink-0 w-72 polaroid reveal" style="transform: rotate(3deg);">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" 
+                         alt="Dara Portrait 6" class="w-full aspect-square object-cover">
+                    <p class="text-center mt-4 font-handwriting text-stone-600 text-sm">Smile always 😊</p>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="flex justify-center mt-6 text-stone-400 text-sm items-center gap-2">
+                <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+                <span>Drag to explore</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Image Column -->
+                <div class="relative reveal">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80" 
+                             alt="Dara Portrait" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-sage/20 rounded-full -z-10"></div>
+                    <div class="absolute -top-6 -left-6 w-32 h-32 border-2 border-sage/30 rounded-full -z-10"></div>
+                </div>
+
+                <!-- Text Column -->
+                <div class="reveal">
+                    <p class="text-sage font-medium tracking-wider uppercase text-sm mb-4">About Me</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-stone-800 mb-6 leading-tight">
+                        Hi, I'm Dara.<br>
+                        <span class="text-2xl md:text-3xl font-light text-stone-500">Visual Storyteller based in Indonesia</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-stone-600 leading-relaxed">
+                        <p>
+                            I'm a passionate creative professional who believes in the power of honest storytelling through visual communication. My approach combines clean aesthetics with emotional depth, creating work that resonates and endures.
+                        </p>
+                        <p>
+                            With expertise in <strong class="text-stone-800">branding</strong> and <strong class="text-stone-800">photography</strong>, I help brands find their authentic voice and visual identity. I value consistency, quality, and meaningful connections in every project I undertake.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 grid grid-cols-3 gap-6 border-t border-stone-200 pt-8">
+                        <div>
+                            <p class="text-3xl font-bold text-sage">5+</p>
+                            <p class="text-sm text-stone-500 mt-1">Years Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-sage">50+</p>
+                            <p class="text-sm text-stone-500 mt-1">Projects Done</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-sage">30+</p>
+                            <p class="text-sm text-stone-500 mt-1">Happy Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills/Services Section -->
+    <section id="skills" class="py-24 px-6 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-sage font-medium tracking-wider uppercase text-sm mb-2">What I Do</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-stone-800">Services</h2>
+                <p class="text-stone-500 mt-4 max-w-2xl mx-auto">
+                    Professional creative services tailored to elevate your brand's visual presence and storytelling.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Photography Service -->
+                <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group reveal">
+                    <div class="w-16 h-16 bg-sage/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sage group-hover:text-white transition-colors text-sage">
+                        <i data-lucide="camera" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-4">Photography</h3>
+                    <p class="text-stone-600 leading-relaxed mb-6">
+                        Capturing authentic moments with a clean, editorial aesthetic. Specializing in portrait, lifestyle, and brand photography that tells your unique story.
+                    </p>
+                    <ul class="space-y-2 text-sm text-stone-500">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sage"></i>
+                            Portrait & Headshots
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sage"></i>
+                            Lifestyle Photography
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sage"></i>
+                            Product Photography
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Branding Service -->
+                <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-sage/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sage group-hover:text-white transition-colors text-sage">
+                        <i data-lucide="palette" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-4">Branding</h3>
+                    <p class="text-stone-600 leading-relaxed mb-6">
+                        Building cohesive brand identities that communicate your values visually. From strategy to execution, creating brands that stand out and stay memorable.
+                    </p>
+                    <ul class="space-y-2 text-sm text-stone-500">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sage"></i>
+                            Brand Strategy
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sage"></i>
+                            Visual Identity Design
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sage"></i>
+                            Brand Guidelines
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-stone-900 text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10 reveal">
+            <p class="text-sage font-medium tracking-wider uppercase text-sm mb-4">Let's Collaborate</p>
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">Ready to create<br>something beautiful?</h2>
+            <p class="text-stone-400 text-lg mb-10 max-w-2xl mx-auto">
+                I'm always excited to work on new projects and meet fellow creatives. Let's discuss how we can bring your vision to life.
+            </p>
+
+            <a href="mailto:cocox229@gmail.com" 
+               class="inline-block bg-sage text-white text-lg px-10 py-4 rounded-full font-medium hover:bg-sage-dark transition-all transform hover:scale-105 mb-12 shadow-lg shadow-sage/25">
+                Work With Me
+            </a>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+                <a href="mailto:cocox229@gmail.com" class="flex flex-col items-center gap-2 text-stone-400 hover:text-sage transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-sm">Email</span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-2 text-stone-400 hover:text-sage transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-sm">Instagram</span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-2 text-stone-400 hover:text-sage transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-sm">Facebook</span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-2 text-stone-400 hover:text-sage transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-sm">X (Twitter)</span>
+                </a>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-stone-800 text-stone-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2024 Dara. All rights reserved.</p>
+                <p>Made with precision & passion</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Horizontal scroll with mouse drag
+        const slider = document.getElementById('polaroid-scroll');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
